@@ -1,0 +1,43 @@
+---
+- hosts: devserver
+  become: yes
+  ignore_errors: True
+  tasks:
+    - name: Creating user
+      user:
+        name: keke
+        comment: keke leboss
+        shell: /bib/bash
+          # when: ansible_os_family== "RedHat"
+    - name: create file
+      file:
+        path: /tmp/ansible.txt
+        state: touch
+        mode: '600'
+    - name: Create directory
+      file:
+        path: /temp/dir
+        state: directory
+        mode: '0777'
+    - name: install apache
+      yum:
+        name: httpd
+        state: present
+
+    - name: install finger
+      package:
+       name: finger
+       state: present
+    
+
+      
+
+
+
+
+
+
+
+
+
+
